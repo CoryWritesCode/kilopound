@@ -1,16 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import GoTo from '../buttons/Navigate';
 
-type AccountProps = {
-  navigation: any;
-}
-
-type AccountState = {
-
-}
-
-export default class AccountScreen extends React.Component<AccountProps, AccountState> {
+export default class AccountScreen extends React.Component {
   render() {
     return (
       <View style={styles.account}>
@@ -19,6 +12,10 @@ export default class AccountScreen extends React.Component<AccountProps, Account
       </View>
     );
   }
+}
+
+AccountScreen.propTypes = {
+
 }
 
 const styles = StyleSheet.create({

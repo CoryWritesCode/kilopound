@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Platform, StyleSheet, Text, View, Image } from 'react-native';
 import GoTo from '../buttons/Navigate';
 
@@ -11,6 +12,10 @@ export default class HomeScreen extends React.Component {
       </View>
     );
   }
+}
+
+HomeScreen.propTypes = {
+
 }
 
 const styles = StyleSheet.create({
