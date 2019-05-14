@@ -3,14 +3,6 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from './src/components/HomeScreen';
 import AccountScreen from './src/components/AccountScreen';
 
-const AppContainer = createAppContainer(AppNavigator);
-
-class App extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
-}
-
 const AppNavigator = createStackNavigator(
   {
     Home: {
@@ -24,5 +16,13 @@ const AppNavigator = createStackNavigator(
     initialRouteName: 'Home'
   }
 );
+
+const AppContainer = createAppContainer(AppNavigator);
+
+class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
 
 export default App;
