@@ -1,29 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, StyleSheet } from 'react-native';
 import GoTo from '../buttons/Navigate';
+import { Text, View, StyleSheet } from 'react-native';
 
-export default class AccountScreen extends React.Component {
+export default class ChallengeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Account'
-  }
+    title: 'Challenges'
+  };
+
   render() {
     return (
-      <View style={styles.account}>
-        <Text>Account Screen</Text>
+      <View style={styles.challenges}>
+        <Text>Challenges Screen</Text>
         <GoTo title="Go to Home" navigate="Home" />
-        <GoTo title="Go to Challenges" navigate="Challenges" />
+        <GoTo title="Go to Account" navigate="Account" />
       </View>
     );
   }
 }
 
-AccountScreen.propTypes = {
+ChallengeScreen.propTypes = {
 
 }
 
 const styles = StyleSheet.create({
-  account: {
+  challenges: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'

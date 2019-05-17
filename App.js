@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from './src/components/HomeScreen';
 import AccountScreen from './src/components/AccountScreen';
+import ChallengeScreen from './src/components/ChallengesScreen';
 
 const AppNavigator = createStackNavigator(
   {
@@ -10,6 +11,9 @@ const AppNavigator = createStackNavigator(
     },
     Account: {
       screen: AccountScreen
+    },
+    Challenges: {
+      screen: ChallengeScreen
     }
   },
   {

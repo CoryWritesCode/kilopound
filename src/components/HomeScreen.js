@@ -3,7 +3,28 @@ import PropTypes from 'prop-types';
 import { Platform, StyleSheet, Text, View, Image } from 'react-native';
 import GoTo from '../buttons/Navigate';
 
+const styles = StyleSheet.create({
+  home: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#2D2F32'
+  },
+  title: {
+    color: 'white'
+  }
+});
+
 export default class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Home',
+    headerStyle: {
+      backgroundColor: styles.home.backgroundColor
+    },
+    headerTitleStyle: {
+      color: styles.title.color
+    }
+  }
   render() {
     return (
       <View style={styles.home}>
@@ -17,15 +38,3 @@ export default class HomeScreen extends React.Component {
 HomeScreen.propTypes = {
 
 }
-
-const styles = StyleSheet.create({
-  home: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#1F2124'
-  },
-  title: {
-    color: 'white'
-  }
-});
