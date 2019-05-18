@@ -1,23 +1,42 @@
 import React from 'react';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { Image, StyleSheet } from 'react-native';
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
+import { COLORS } from './src/styles/global';
 import HomeScreen from './src/components/HomeScreen';
 import AccountScreen from './src/components/AccountScreen';
 import ChallengeScreen from './src/components/ChallengesScreen';
 
-const AppNavigator = createStackNavigator(
+const AppNavigator = createBottomTabNavigator(
   {
     Home: {
       screen: HomeScreen,
+      navitionOptions: {
+        tabBarAccessiblityLabel: 'Home',
+      }
     },
     Account: {
-      screen: AccountScreen
+      screen: AccountScreen,
+      navigationOptions: {
+        tabBarAccessiblityLabel: 'Account',
+      }
     },
     Challenges: {
-      screen: ChallengeScreen
+      screen: ChallengeScreen,
+      navigationOptions: {
+        tabBarAccessiblityLabel: 'Challenges'
+      },
     }
   },
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      tabBarOptions: {
+        activeTintColor: COLORS.BTN_COLOR,
+        style: {
+          backgroundColor: COLORS.BGCOLOR
+        },
+      },
+    }
   }
 );
 
