@@ -17,13 +17,7 @@ const styles = StyleSheet.create({
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Home',
-    headerStyle: {
-      backgroundColor: styles.home.backgroundColor
-    },
-    headerTitleStyle: {
-      color: styles.title.color
-    }
+    title: 'Home'
   }
   render() {
     return (

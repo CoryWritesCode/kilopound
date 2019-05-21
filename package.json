@@ -6,20 +6,24 @@
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "start": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
-    "test": "jest"
+    "test": "jest",
+    "clean": "rm -rf node_modules/ && yarn"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.18",
+    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@fortawesome/react-native-fontawesome": "^0.1.0",
     "eslint": "^5.16.0",
     "react": "16.8.3",
     "react-native": "0.59.8",
     "react-native-gesture-handler": "^1.2.1",
+    "react-native-svg": "^9.4.0",
     "react-navigation": "^3.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/runtime": "^7.4.4",
-    "@fortawesome/fontawesome-free": "^5.8.2",
     "babel-jest": "^24.8.0",
     "babel-preset-react-native": "^4.0.1",
     "eslint-plugin-react": "^7.13.0",
