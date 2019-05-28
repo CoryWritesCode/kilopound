@@ -15,18 +15,13 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Home'
-  }
-  render() {
-    return (
-      <View style={styles.home}>
-        <Text style={styles.title}>Home Screen</Text>
-        <GoTo title="Go to Account" navigate="Account" />
-      </View>
-    );
-  }
+export default function HomeScreen() {
+  return (
+    <View style={styles.home}>
+      <Text style={styles.title}>Home Screen</Text>
+      <GoTo title="Go to Account" navigate="Account" />
+    </View>
+  );
 }
 
 HomeScreen.propTypes = {

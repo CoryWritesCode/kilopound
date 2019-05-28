@@ -16,20 +16,14 @@ const styles = StyleSheet.create({
   }
 })
 
-export default class ChallengeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Challenges'
-  };
-
-  render() {
-    return (
-      <View style={styles.challenges}>
-        <Text style={styles.title}>Challenges Screen</Text>
-        <GoTo title="Go to Home" navigate="Home" />
-        <GoTo title="Go to Account" navigate="Account" />
-      </View>
-    );
-  }
+export default function ChallengeScreen() {
+  return (
+    <View style={styles.challenges}>
+      <Text style={styles.title}>Challenges Screen</Text>
+      <GoTo title="Go to Home" navigate="Home" />
+      <GoTo title="Go to Account" navigate="Account" />
+    </View>
+  );
 }
 
 ChallengeScreen.propTypes = {
