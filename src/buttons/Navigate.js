@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, StyleSheet } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { COLORS } from '../styles/global';
 
@@ -10,15 +10,16 @@ const styles = StyleSheet.create({
   }
 })
 
-class GoTo extends React.Component {
-  render() {
-    return <Button color={styles.goTo.color} title={this.props.title} onPress={() => { this.props.navigation.navigate(this.props.navigate) }} />;
-  }
+function GoTo(props) {
+  return <View style={props.look}>
+    <Button color={styles.goTo.color} title={props.title} onPress={() => { props.navigation.navigate(props.navigate) }} />
+  </View>
 }
 
 GoTo.propTypes = {
   navigate: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  look: PropTypes.object
 }
 
 export default withNavigation(GoTo);

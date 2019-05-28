@@ -1,24 +1,25 @@
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
 import { createAppContainer, createBottomTabNavigator } from 'react-navigation';
 import { COLORS } from './src/styles/global';
 import { faHome, faDumbbell, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import HomeScreen from './src/components/HomeScreen';
-import AccountScreen from './src/components/AccountScreen';
 import ChallengeScreen from './src/components/ChallengesScreen';
 import TabBarIcon from './src/buttons/TabBarIcon';
+import AccountStack from './src/utils/stacks/AccountStack';
 
 const AppNavigator = createBottomTabNavigator(
   {
     Home: {
       screen: HomeScreen,
+      path: '/',
       navigationOptions: {
         tabBarAccessiblityLabel: 'Home',
         tabBarIcon: ({ tintColor }) => { return <TabBarIcon icon={faHome} color={tintColor} /> }
       }
     },
     Account: {
-      screen: AccountScreen,
+      screen: AccountStack,
+      path: '/account',
       navigationOptions: {
         tabBarAccessiblityLabel: 'Account',
         tabBarIcon: ({ tintColor }) => { return <TabBarIcon icon={faUserCircle} color={tintColor} /> }
@@ -26,6 +27,7 @@ const AppNavigator = createBottomTabNavigator(
     },
     Challenges: {
       screen: ChallengeScreen,
+      path: '/challenge',
       navigationOptions: {
         tabBarAccessiblityLabel: 'Challenges',
         tabBarIcon: ({ tintColor }) => { return <TabBarIcon icon={faDumbbell} color={tintColor} /> }
