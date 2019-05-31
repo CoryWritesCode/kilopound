@@ -3,7 +3,6 @@ import { Button, View, Text, TextInput, StyleSheet } from 'react-native';
 import { getData, storeData } from '../utils/AsyncStorage';
 import PropTypes from 'prop-types';
 import { COLORS } from '../styles/global';
-import GoTo from '../buttons/Navigate';
 import InputWithLabel from './InputWithLabel';
 
 const styles = StyleSheet.create({
@@ -62,28 +61,20 @@ export default function UserInfo() {
   //   }
   // }
 
-  const [name, setName] = useState({ fisrtName: 'Cory', lastName: 'Cuningham' });
-
-  var {
-    firstName,
-    lastName,
-    pbDeadLift,
-    pbBenchPress,
-    pbCleanPress
-  } = this.state;
+  const [firstName, setFirstName] = useState('test');
+  const [lastName, setLastName] = useState('');
+  const [pbDeadLift, setPbDeadLift] = useState('');
+  const [pbBenchPress, setPbBenchPress] = useState('');
+  const [pbCleanPress, setPbCleanPress] = useState('');
 
   return (
     <View style={styles.container}>
       <InputWithLabel
-        label='test'
+        label={firstName}
         inputValue='value'
-        onChange={(e) => { this.setState({ firstName: e.value }) }}
+        onChange={(e) => setFirstName(e.target.value)}
+        text={firstName}
       />
-      <TextInput style={styles.inputStyle} value={firstName} />
-      <TextInput style={styles.inputStyle} value={lastName} />
-      <TextInput style={styles.inputStyle} value={pbDeadLift} />
-      <TextInput style={styles.inputStyle} value={pbBenchPress} />
-      <TextInput style={styles.inputStyle} value={pbCleanPress} />
     </View>
   );
-};
+}

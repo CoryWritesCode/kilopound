@@ -14,7 +14,7 @@ const AppNavigator = createBottomTabNavigator(
       path: '/',
       navigationOptions: {
         tabBarAccessiblityLabel: 'Home',
-        tabBarIcon: ({ tintColor }) => { return <TabBarIcon icon={faHome} color={tintColor} /> }
+        tabBarIcon: ({ tintColor }) => { return <TabBarIcon icon={faHome} color={tintColor} />; }
       }
     },
     Account: {
@@ -22,7 +22,7 @@ const AppNavigator = createBottomTabNavigator(
       path: '/account',
       navigationOptions: {
         tabBarAccessiblityLabel: 'Account',
-        tabBarIcon: ({ tintColor }) => { return <TabBarIcon icon={faUserCircle} color={tintColor} /> }
+        tabBarIcon: ({ tintColor }) => { return <TabBarIcon icon={faUserCircle} color={tintColor} />; }
       }
     },
     Challenges: {
@@ -30,7 +30,7 @@ const AppNavigator = createBottomTabNavigator(
       path: '/challenge',
       navigationOptions: {
         tabBarAccessiblityLabel: 'Challenges',
-        tabBarIcon: ({ tintColor }) => { return <TabBarIcon icon={faDumbbell} color={tintColor} /> }
+        tabBarIcon: ({ tintColor }) => { return <TabBarIcon icon={faDumbbell} color={tintColor} />; }
       },
     }
   },

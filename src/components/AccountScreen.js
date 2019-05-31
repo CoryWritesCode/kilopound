@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   title: {
     color: COLORS.FONT_COLOR
   }
-})
+});
 
 export default class AccountScreen extends React.Component {
   static navigationOptions = {
@@ -25,16 +25,16 @@ export default class AccountScreen extends React.Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       firstName: ''
-    }
+    };
   }
 
   willFocus = async () => {
     let user = await getData('user');
-    console.log(user);
+    // console.log(user);
     if (user === null) {
       this.props.navigation.navigate('UserInfo');
     }
@@ -43,7 +43,7 @@ export default class AccountScreen extends React.Component {
   render() {
     return (
       <View style={styles.account}>
-        {/* <NavigationEvents onWillFocus={this.willFocus} /> */}
+        <NavigationEvents onWillFocus={this.willFocus} />
         <Text style={styles.title}>Account Screen</Text>
         <GoTo title="Go to Home" navigate="Home" />
         <GoTo title="Go to Challenges" navigate="Challenges" />
@@ -54,4 +54,4 @@ export default class AccountScreen extends React.Component {
 
 AccountScreen.propTypes = {
 
-}
+};
