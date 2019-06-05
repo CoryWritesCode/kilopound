@@ -4,25 +4,39 @@ import { TextInput, View, Text, StyleSheet } from 'react-native';
 import { COLORS } from '../styles/global';
 
 const styles = StyleSheet.create({
+  labelStyle: {
+    color: COLORS.FONT_COLOR,
+    textDecorationLine: 'underline',
+    marginTop: 10,
+  },
   inputStyle: {
-    color: COLORS.FONT_COLOR
+    color: COLORS.FONT_COLOR,
+    borderColor: '#6A6C6E',
+    borderWidth: 1,
+    borderRadius: 2.5,
+    marginVertical: 5,
+    padding: 5,
   }
 });
 
-export default function InputWithLabel(props) {
+const InputWithLabel = (props) => {
 
   return (
-    <View style={{ color: COLORS.FONT_COLOR }}>
-      <Text style={{ color: COLORS.FONT_COLOR }}>{props.label}</Text>
-      <Text>{props.text}</Text>
-      <TextInput keyboardAppearance='dark' value={props.value} onChange={props.onChange} />
+    <View>
+      <Text style={styles.labelStyle}>{props.label}</Text>
+      <TextInput
+        {...props}
+        keyboardAppearance='dark'
+        value={props.inputValue}
+        style={styles.inputStyle} />
     </View>
   );
-}
+};
 
 InputWithLabel.propTypes = {
   label: PropTypes.string.isRequired,
   inputValue: PropTypes.string,
-  // onChange: PropTypes.func.isRequired,
-  text: PropTypes.string
+  onChange: PropTypes.func,
 };
+
+export default InputWithLabel;
