@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   title: {
     color: COLORS.FONT_COLOR
   }
-})
+});
 
 export default function ChallengeScreen() {
   return (
@@ -28,4 +28,4 @@ export default function ChallengeScreen() {
 
 ChallengeScreen.propTypes = {
 
-}
+};

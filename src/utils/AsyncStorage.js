@@ -36,4 +36,4 @@ export const mergeData = async (key, value) => {
     throw e;
   }
   alert('Changes Saved');
-}
+};

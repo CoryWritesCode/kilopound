@@ -20,6 +20,6 @@ const AccountStack = createStackNavigator(
 
 AccountStack.navigationOptions = ({ navigation }) => ({
   tabBarVisible: navigation.state.index === 0
-})
+});
 
 export default AccountStack;
