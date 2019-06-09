@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     color: COLORS.FONT_COLOR,
-    borderColor: '#6A6C6E',
+    borderColor: COLORS.SECONDARY,
     borderWidth: 1,
     borderRadius: 2.5,
     marginVertical: 5,

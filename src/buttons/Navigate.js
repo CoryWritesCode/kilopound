@@ -6,7 +6,7 @@ import { COLORS } from '../styles/global';
 
 const styles = StyleSheet.create({
   goTo: {
-    color: COLORS.ACTIVE_BTN_COLOR
+    color: COLORS.PRIMARY
   }
 });
 

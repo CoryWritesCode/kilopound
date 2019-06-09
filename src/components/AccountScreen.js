@@ -35,7 +35,7 @@ export default class AccountScreen extends React.Component {
   willFocus = async () => {
     let user = await getData('user');
     if (user === null) {
-      this.props.navigation.navigate('UserInfo');
+      this.props.navigation.navigate('UserInfo', { firstTime: true });
     }
   }
 
