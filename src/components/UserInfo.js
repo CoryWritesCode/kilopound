@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, View, Text, TextInput, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 import { getData, storeData } from '../utils/AsyncStorage';
-import PropTypes from 'prop-types';
 import { COLORS } from '../styles/global';
 import InputWithLabel from './InputWithLabel';
 import GoTo from '../buttons/Navigate';
@@ -26,16 +25,25 @@ const styles = StyleSheet.create({
   }
 });
 
-let _user = async () => await getData('user');
+let user = async () => await getData('user');
 
-const UserInfo = () => {
+const UserInfo = ({ navigation }) => {
 
-  const [firstName, setFirstName] = useState(_user.firstName || '');
-  const [lastName, setLastName] = useState(_user.lastName || '');
+  const [firstName, setFirstName] = useState(user.firstName || '');
+  const [lastName, setLastName] = useState(user.lastName || '');
   // Will do this later most likely.
   // const [pbDeadLift, setPbDeadLift] = useState('');
   // const [pbBenchPress, setPbBenchPress] = useState('');
   // const [pbCleanPress, setPbCleanPress] = useState('');
+
+  const saveUser = async () => {
+    let user = {
+      firstName: firstName,
+      lastName: lastName
+    };
+    await storeData('user', user);
+    navigation.goBack();
+  };
 
   return (
     <View style={styles.container}>
@@ -50,7 +58,9 @@ const UserInfo = () => {
         onChangeText={(e) => setLastName(e)}
         inputValue={lastName === '' ? '' : lastName}
       />
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={saveUser}>
         <Text style={styles.buttonText}>Save</Text>
       </TouchableOpacity>
       {/* <Text>Personal Best:</Text>
@@ -76,8 +86,8 @@ const UserInfo = () => {
 UserInfo.navigationOptions = {
   headerTitle: 'User Info',
   gesturesEnabled: false,
-  headerLeft: _user.firstName === '' || null ? <View>
-    <GoTo look={styles.button} title='Xtrue' navigate={'Account'} />
+  headerLeft: user.firstName === '' || null ? <View>
+    <GoTo look={styles.button} title='X' navigate={'Account'} />
   </View> : null,
   headerStyle: {
     backgroundColor: COLORS.BGCOLOR,
@@ -86,9 +96,5 @@ UserInfo.navigationOptions = {
     color: COLORS.FONT_COLOR
   }
 };
-
-{/* <View >
-<GoTo look={styles.button} title='X' navigate={'Account'} />
-  </View > */}
 
 export default UserInfo;
