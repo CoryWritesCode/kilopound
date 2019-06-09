@@ -37,12 +37,16 @@ const UserInfo = ({ navigation }) => {
   // const [pbCleanPress, setPbCleanPress] = useState('');
 
   const saveUser = async () => {
-    let user = {
-      firstName: firstName,
-      lastName: lastName
-    };
-    await storeData('user', user);
-    navigation.goBack();
+    if (firstName === '' && lastName === '') {
+      return;
+    } else {
+      let user = {
+        firstName: firstName,
+        lastName: lastName
+      };
+      await storeData('user', user);
+      navigation.goBack();
+    }
   };
 
   return (
