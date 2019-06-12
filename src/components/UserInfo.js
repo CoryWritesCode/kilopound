@@ -31,10 +31,6 @@ const UserInfo = ({ navigation }) => {
 
   const [firstName, setFirstName] = useState(user.firstName || '');
   const [lastName, setLastName] = useState(user.lastName || '');
-  // Will do this later most likely.
-  // const [pbDeadLift, setPbDeadLift] = useState('');
-  // const [pbBenchPress, setPbBenchPress] = useState('');
-  // const [pbCleanPress, setPbCleanPress] = useState('');
 
   const saveUser = async () => {
     if (firstName === '' || lastName === '') {
@@ -67,22 +63,6 @@ const UserInfo = ({ navigation }) => {
         onPress={saveUser}>
         <Text style={styles.buttonText}>Save</Text>
       </TouchableOpacity>
-      {/* <Text>Personal Best:</Text>
-      <InputWithLabel
-        label='Dead Lift'
-        onChangeText={(e) => setPbDeadLift(e)}
-        inputValue={pbDeadLift === '' ? '' : pbDeadLift}
-      />
-      <InputWithLabel
-        label='Bench Press'
-        onChangeText={(e) => setPbBenchPress(e)}
-        inputValue={pbBenchPress === '' ? '' : pbBenchPress}
-      />
-      <InputWithLabel
-        label='Clean Press'
-        onChangeText={(e) => setPbCleanPress(e)}
-        inputValue={pbCleanPress === '' ? '' : pbCleanPress}
-      /> */}
     </View>
   );
 };

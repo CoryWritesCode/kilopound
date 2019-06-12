@@ -9,12 +9,21 @@ import { NavigationEvents } from 'react-navigation';
 const styles = StyleSheet.create({
   account: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: COLORS.BGCOLOR,
+    paddingTop: 50
   },
   title: {
-    color: COLORS.FONT_COLOR
+    flex: 1,
+    color: COLORS.FONT_COLOR,
+    paddingHorizontal: 20,
+    textDecorationLine: 'underline'
+  },
+  info: {
+    flex: 12,
+  },
+  content: {
+    color: COLORS.FONT_COLOR,
+    paddingHorizontal: 20,
   }
 });
 
@@ -43,14 +52,14 @@ const AccountScreen = ({ navigation }) => {
   return (
     <View style={styles.account}>
       <NavigationEvents onWillFocus={willFocus} />
-      <Text style={styles.title}>Account Screen</Text>
-      <Text style={styles.title}>Hello {user.firstName} {user.lastName}</Text>
-      <GoTo title="Go to Home" navigate="Home" />
-      <GoTo title="Go to Challenges" navigate="Challenges" />
-      {/* creating this button below for debugging so you don't have to delete and recreate the app each time you save the User. Will remove it later. */}
-      <TouchableOpacity style={{ padding: 20, margin: 20, borderWidth: 1, borderColor: 'white' }} onPress={handleReset}>
-        <Text style={{ color: 'white' }}>Reset</Text>
-      </TouchableOpacity>
+      <Text style={styles.title}>Account</Text>
+      <View style={styles.info}>
+        <Text style={styles.content}>Hello {user.firstName} {user.lastName}</Text>
+        {/* creating this button below for debugging so you don't have to delete and recreate the app each time you save the User. Will remove it later. */}
+        <TouchableOpacity style={{ padding: 20, margin: 20, borderWidth: 1, borderColor: 'white', alignSelf: 'baseline' }} onPress={handleReset}>
+          <Text style={{ color: 'white' }}>Reset</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
