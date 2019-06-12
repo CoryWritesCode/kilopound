@@ -37,14 +37,14 @@ const UserInfo = ({ navigation }) => {
   // const [pbCleanPress, setPbCleanPress] = useState('');
 
   const saveUser = async () => {
-    if (firstName === '' && lastName === '') {
+    if (firstName === '' || lastName === '') {
       return;
     } else {
       let user = {
-        firstName: firstName,
-        lastName: lastName
+        'firstName': firstName,
+        'lastName': lastName
       };
-      await storeData('user', user);
+      await storeData('user', JSON.stringify(user));
       navigation.goBack();
     }
   };

@@ -20,14 +20,18 @@ const styles = StyleSheet.create({
 
 const AccountScreen = ({ navigation }) => {
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState([]);
 
   let willFocus = async () => {
-    let userObj = await getData('user');
-    if (userObj === null) {
-      navigation.navigate('UserInfo');
-    } else {
-      setUser(userObj);
+    try {
+      let userObj = await getData('user');
+      if (userObj === null) {
+        navigation.navigate('UserInfo');
+      } else {
+        setUser(JSON.parse(userObj));
+      }
+    } catch (e) {
+      throw e;
     }
   };
 

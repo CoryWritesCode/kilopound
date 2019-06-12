@@ -7,7 +7,7 @@ export const storeData = async (key, value) => {
     alert('Unable to store data.');
     throw e;
   }
-  alert('Saved');
+  alert('Info Saved!');
 };
 
 export const getData = async (key) => {
@@ -25,7 +25,7 @@ export const removeData = async (key) => {
     alert('Unable to remove data.');
     throw e;
   }
-  alert('Removed!');
+  alert('Info Removed!');
 };
 
 export const mergeData = async (key, value) => {
@@ -35,5 +35,5 @@ export const mergeData = async (key, value) => {
     alert('Unable to change data.');
     throw e;
   }
-  alert('Changes Saved');
+  alert('Changes Saved!');
 };
