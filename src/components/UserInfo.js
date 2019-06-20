@@ -24,26 +24,44 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: 'bold',
     color: COLORS.PRIMARY,
+  },
+  headerBtn: {
+    marginLeft: 10
   }
 });
 
-const UserInfo = ({ navigation }) => {
+export default class UserInfo extends React.Component {
+  static navigationOptions({ navigation }) {
+    let edit = navigation.getParam('edit', false);
+    return {
+      headerTitle: 'User Info',
+      gesturesEnabled: false,
+      headerLeft: edit ? <View>
+        <GoTo look={styles.headerBtn} title='X' navigate={'Account'} />
+      </View> : null,
+      headerStyle: {
+        backgroundColor: COLORS.BGCOLOR,
+      },
+      headerTitleStyle: {
+        color: COLORS.FONT_COLOR
+      }
+    };
+  }
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  constructor(props) {
+    super(props);
 
-  let willFocus = async () => {
-    try {
-      let userObj = await getData('user');
-      let user = JSON.parse(userObj);
-      setFirstName(user.firstName);
-      setLastName(user.lastName);
-    } catch (e) {
-      throw e;
-    }
-  };
+    this.state = {
+      firstName: '',
+      lastName: '',
+    };
+  }
 
-  const saveUser = async () => {
+  saveUser = async () => {
+    var {
+      firstName,
+      lastName
+    } = this.state;
     if (firstName === '' || lastName === '') {
       return;
     } else {
@@ -52,45 +70,47 @@ const UserInfo = ({ navigation }) => {
         'lastName': lastName
       };
       await storeData('user', JSON.stringify(userInfo));
-      navigation.goBack();
+      this.props.navigation.goBack();
     }
   };
 
-  return (
-    <View style={styles.container}>
-      <NavigationEvents onWillFocus={willFocus} />
-      <Text></Text>
-      <InputWithLabel
-        label='First Name'
-        onChangeText={(e) => setFirstName(e)}
-        inputValue={firstName === '' ? '' : firstName}
-      />
-      <InputWithLabel
-        label='Last Name'
-        onChangeText={(e) => setLastName(e)}
-        inputValue={lastName === '' ? '' : lastName}
-      />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={saveUser}>
-        <Text style={styles.buttonText}>Save</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-UserInfo.navigationOptions = {
-  headerTitle: 'User Info',
-  gesturesEnabled: false,
-  headerLeft: undefined ? <View>
-    <GoTo look={styles.button} title='X' navigate={'Account'} />
-  </View> : null,
-  headerStyle: {
-    backgroundColor: COLORS.BGCOLOR,
-  },
-  headerTitleStyle: {
-    color: COLORS.FONT_COLOR
+  async componentWillMount() {
+    let userObj = await getData('user');
+    let user = JSON.parse(userObj);
+    if (userObj) {
+      this.setState({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        edit: true
+      });
+    }
   }
-};
 
-export default UserInfo;
+  render() {
+
+    var {
+      firstName,
+      lastName
+    } = this.state;
+
+    return (
+      <View style={styles.container}>
+        <InputWithLabel
+          label='First Name'
+          onChangeText={(e) => this.setState({ firstName: e })}
+          inputValue={firstName}
+        />
+        <InputWithLabel
+          label='Last Name'
+          onChangeText={(e) => this.setState({ lastName: e })}
+          inputValue={lastName}
+        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={this.saveUser}>
+          <Text style={styles.buttonText}>Save</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}

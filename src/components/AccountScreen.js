@@ -41,6 +41,7 @@ const AccountScreen = ({ navigation }) => {
     try {
       let userObj = await getData('user');
       if (userObj === null) {
+        navigation.setParams({ edit: false });
         navigation.navigate('UserInfo');
       } else {
         setUser(JSON.parse(userObj));

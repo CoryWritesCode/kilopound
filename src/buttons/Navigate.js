@@ -12,14 +12,15 @@ const styles = StyleSheet.create({
 
 function GoTo(props) {
   return <View style={props.look}>
-    <Button color={styles.goTo.color} title={props.title} onPress={() => { props.navigation.navigate(props.navigate); }} />
+    <Button disabled={props.isDisabled} color={styles.goTo.color} title={props.title} onPress={() => { props.navigation.navigate(props.navigate); }} />
   </View>;
 }
 
 GoTo.propTypes = {
   navigate: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  look: PropTypes.object
+  look: PropTypes.object,
+  isDisabled: PropTypes.bool
 };
 
 export default withNavigation(GoTo);
