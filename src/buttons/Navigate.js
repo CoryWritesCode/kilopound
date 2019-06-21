@@ -1,19 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { COLORS } from '../styles/global';
 
 const styles = StyleSheet.create({
   goTo: {
-    color: COLORS.PRIMARY
+    color: COLORS.PRIMARY,
   }
 });
 
 function GoTo(props) {
-  return <View style={props.look}>
-    <Button disabled={props.isDisabled} color={styles.goTo.color} title={props.title} onPress={() => { props.navigation.navigate(props.navigate); }} />
-  </View>;
+  let handlePress = props.isDisabled ? () => { } : () => { props.navigation.navigate(props.navigate); };
+  return (
+    <View>
+      <TouchableOpacity
+        style={props.look}
+        onPress={handlePress}>
+        <Text style={styles.goTo}>{props.title}</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 GoTo.propTypes = {
