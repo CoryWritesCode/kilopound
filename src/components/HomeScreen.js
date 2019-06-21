@@ -5,7 +5,8 @@ import {
   View,
   StatusBar,
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
+  Switch
 } from 'react-native';
 import { AddWeight } from '../buttons';
 import { COLORS, DIMENSIONS } from '../styles/global';
@@ -38,43 +39,75 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginVertical: 5
   },
-  container: {
+  weightContainer: {
     height: '75%',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
+  totalContainer: {
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignContent: 'center',
+  },
+  switchContainer: {
     justifyContent: 'center'
   }
 });
 
 export default function HomeScreen() {
   const [total, setTotal] = useState(0);
+  const [isBritish, setIsBritish] = useState(false);
+  let metric = isBritish ? 'kg' : 'lbs';
 
   const pounds = [
-
+    1.1,
+    2.2,
+    3,
+    4.5,
+    5.5,
+    11,
+    22,
+    33,
+    44,
+    55
   ];
 
   const kilograms = [
-
+    0.5,
+    1,
+    1.5,
+    2,
+    2.5,
+    5,
+    10,
+    15,
+    20,
+    25
   ];
+
+  let weights = isBritish ? kilograms : pounds;
 
   return (
     <SafeAreaView style={styles.home}>
       <View style={styles.home}>
         <StatusBar barStyle="light-content" />
         <Text style={styles.title}>Home Screen</Text>
-        <View style={styles.container}>
-          <AddWeight look={styles.content} amount={10} handlePress={() => setTotal(total + 10)} />
-          <AddWeight look={styles.content} amount={20} handlePress={() => setTotal(total + 20)} />
-          <AddWeight look={styles.content} amount={30} handlePress={() => setTotal(total + 30)} />
-          <AddWeight look={styles.content} amount={40} handlePress={() => setTotal(total + 40)} />
-          <AddWeight look={styles.content} amount={50} handlePress={() => setTotal(total + 50)} />
-          <AddWeight look={styles.content} amount={60} handlePress={() => setTotal(total + 60)} />
-          <AddWeight look={styles.content} amount={70} handlePress={() => setTotal(total + 70)} />
-          <AddWeight look={styles.content} amount={80} handlePress={() => setTotal(total + 80)} />
-          <AddWeight look={styles.content} amount={90} handlePress={() => setTotal(total + 90)} />
-          <AddWeight look={styles.content} amount={100} handlePress={() => setTotal(total + 100)} />
+        <View style={styles.weightContainer}>
+          {weights.map((weight) => <AddWeight key={weight} look={styles.content} amount={weight} handlePress={() => setTotal(total + weight)} />)}
         </View>
-        <Text style={styles.content}>Total: {total}</Text>
+        <View style={styles.totalContainer}>
+          <Text style={styles.content}>Total: {total} {metric}</Text>
+          <View style={styles.switchContainer}>
+            <Switch
+              trackColor={{ false: COLORS.PRIMARY, true: COLORS.PRIMARY }}
+              onValueChange={() => setIsBritish(!isBritish)}
+              value={isBritish}
+              thumbColor={COLORS.FONT_COLOR}
+            />
+          </View>
+        </View>
         <TouchableOpacity style={styles.resetBtn} onPress={() => setTotal(0)}>
           <Text style={{ color: styles.resetBtn.borderColor }}>Reset</Text>
         </TouchableOpacity>
