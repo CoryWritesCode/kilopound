@@ -1,33 +1,53 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import GoTo from '../buttons/Navigate';
-import { COLORS } from '../styles/global';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
+import { COLORS, DIMENSIONS } from '../styles/global';
 import { getData, removeData } from '../utils/AsyncStorage';
 import { NavigationEvents } from 'react-navigation';
 
 const styles = StyleSheet.create({
   account: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: COLORS.BGCOLOR,
+    paddingTop: 50
   },
   title: {
-    color: COLORS.FONT_COLOR
+    height: '7%',
+    color: COLORS.FONT_COLOR,
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
+    fontSize: DIMENSIONS.MAX_WIDTH * 0.06,
+    alignSelf: 'center'
+  },
+  info: {
+    height: '93%',
+  },
+  content: {
+    color: COLORS.FONT_COLOR,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: COLORS.SEC_BGCOLOR,
+    marginVertical: 5,
+  },
+  button: {
+    color: COLORS.PRIMARY
   }
 });
 
 const AccountScreen = ({ navigation }) => {
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState([]);
 
   let willFocus = async () => {
-    let userObj = await getData('user');
-    if (userObj === null) {
-      navigation.navigate('UserInfo');
-    } else {
-      setUser(userObj);
+    try {
+      let userObj = await getData('user');
+      if (userObj === null) {
+        navigation.setParams({ edit: false });
+        navigation.navigate('UserInfo');
+      } else {
+        setUser(JSON.parse(userObj));
+      }
+    } catch (e) {
+      throw e;
     }
   };
 
@@ -38,16 +58,20 @@ const AccountScreen = ({ navigation }) => {
 
   return (
     <View style={styles.account}>
+      <StatusBar barStyle="light-content" />
       <NavigationEvents onWillFocus={willFocus} />
-      <Text style={styles.title}>Account Screen</Text>
-      <Text style={styles.title}>Hello {user.firstName} {user.lastName}</Text>
-      <GoTo title="Go to Home" navigate="Home" />
-      <GoTo title="Go to Challenges" navigate="Challenges" />
-      {/* creating this button below for debugging so you don't have to delete and recreate the app each time you save the User. Will remove it later. */}
-      <TouchableOpacity style={{ padding: 20, margin: 20, borderWidth: 1, borderColor: 'white' }} onPress={handleReset}>
-        <Text style={{ color: 'white' }}>Reset</Text>
-      </TouchableOpacity>
-    </View>
+      <Text style={styles.title}>Account</Text>
+      <View style={styles.info}>
+        <Text style={styles.content}>Hello, {user.firstName}!</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('UserInfo', { edit: true })}>
+          <Text style={[styles.content, styles.button]}>Edit your info</Text>
+        </TouchableOpacity>
+        {/* creating this button below for debugging so you don't have to delete and recreate the app each time you save the User. Will remove it later. */}
+        <TouchableOpacity style={{ padding: 10, margin: 10, borderWidth: 1, borderColor: 'white', alignSelf: 'baseline' }} onPress={handleReset}>
+          <Text style={{ color: 'white' }}>Reset</Text>
+        </TouchableOpacity>
+      </View>
+    </View >
   );
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GoTo from '../buttons/Navigate';
 import { COLORS } from '../styles/global';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, StatusBar } from 'react-native';
 
 const styles = StyleSheet.create({
   challenges: {
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
 export default function ChallengeScreen() {
   return (
     <View style={styles.challenges}>
+      <StatusBar barStyle="light-content" />
       <Text style={styles.title}>Challenges Screen</Text>
       <GoTo title="Go to Home" navigate="Home" />
       <GoTo title="Go to Account" navigate="Account" />

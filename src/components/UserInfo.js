@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { TouchableOpacity, View, Text, StyleSheet, StatusBar } from 'react-native';
 import { getData, storeData } from '../utils/AsyncStorage';
 import { COLORS } from '../styles/global';
 import InputWithLabel from './InputWithLabel';
@@ -17,88 +17,100 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 1,
     borderColor: COLORS.PRIMARY,
+    borderRadius: 5,
     alignItems: 'center',
   },
   buttonText: {
     fontWeight: 'bold',
     color: COLORS.PRIMARY,
+  },
+  headerBtn: {
+    marginLeft: 10
   }
 });
 
-let user = async () => await getData('user');
+export default class UserInfo extends React.Component {
+  static navigationOptions({ navigation }) {
+    let edit = navigation.getParam('edit', false);
+    return {
+      headerTitle: 'User Info',
+      gesturesEnabled: false,
+      headerLeft: edit ? <View>
+        <GoTo look={styles.headerBtn} title='X' navigate={'Account'} />
+      </View> : null,
+      headerStyle: {
+        backgroundColor: COLORS.BGCOLOR,
+      },
+      headerTitleStyle: {
+        color: COLORS.FONT_COLOR
+      }
+    };
+  }
 
-const UserInfo = ({ navigation }) => {
+  constructor(props) {
+    super(props);
 
-  const [firstName, setFirstName] = useState(user.firstName || '');
-  const [lastName, setLastName] = useState(user.lastName || '');
-  // Will do this later most likely.
-  // const [pbDeadLift, setPbDeadLift] = useState('');
-  // const [pbBenchPress, setPbBenchPress] = useState('');
-  // const [pbCleanPress, setPbCleanPress] = useState('');
+    this.state = {
+      firstName: '',
+      lastName: '',
+    };
+  }
 
-  const saveUser = async () => {
-    if (firstName === '' && lastName === '') {
+  saveUser = async () => {
+    var {
+      firstName,
+      lastName
+    } = this.state;
+    if (firstName === '' || lastName === '') {
       return;
     } else {
-      let user = {
-        firstName: firstName,
-        lastName: lastName
+      let userInfo = {
+        'firstName': firstName,
+        'lastName': lastName
       };
-      await storeData('user', user);
-      navigation.goBack();
+      await storeData('user', JSON.stringify(userInfo));
+      this.props.navigation.goBack();
     }
   };
 
-  return (
-    <View style={styles.container}>
-      <Text></Text>
-      <InputWithLabel
-        label='First Name'
-        onChangeText={(e) => setFirstName(e)}
-        inputValue={firstName === '' ? '' : firstName}
-      />
-      <InputWithLabel
-        label='Last Name'
-        onChangeText={(e) => setLastName(e)}
-        inputValue={lastName === '' ? '' : lastName}
-      />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={saveUser}>
-        <Text style={styles.buttonText}>Save</Text>
-      </TouchableOpacity>
-      {/* <Text>Personal Best:</Text>
-      <InputWithLabel
-        label='Dead Lift'
-        onChangeText={(e) => setPbDeadLift(e)}
-        inputValue={pbDeadLift === '' ? '' : pbDeadLift}
-      />
-      <InputWithLabel
-        label='Bench Press'
-        onChangeText={(e) => setPbBenchPress(e)}
-        inputValue={pbBenchPress === '' ? '' : pbBenchPress}
-      />
-      <InputWithLabel
-        label='Clean Press'
-        onChangeText={(e) => setPbCleanPress(e)}
-        inputValue={pbCleanPress === '' ? '' : pbCleanPress}
-      /> */}
-    </View>
-  );
-};
-
-UserInfo.navigationOptions = {
-  headerTitle: 'User Info',
-  gesturesEnabled: false,
-  headerLeft: user.firstName === '' || null ? <View>
-    <GoTo look={styles.button} title='X' navigate={'Account'} />
-  </View> : null,
-  headerStyle: {
-    backgroundColor: COLORS.BGCOLOR,
-  },
-  headerTitleStyle: {
-    color: COLORS.FONT_COLOR
+  async componentWillMount() {
+    let userObj = await getData('user');
+    let user = JSON.parse(userObj);
+    if (userObj) {
+      this.setState({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        edit: true
+      });
+    }
   }
-};
 
-export default UserInfo;
+  render() {
+
+    var {
+      firstName,
+      lastName
+    } = this.state;
+
+    return (
+      <View style={styles.container}>
+        <StatusBar barStyle="light-content" />
+        <InputWithLabel
+          label='First Name'
+          onChangeText={(e) => this.setState({ firstName: e })}
+          inputValue={firstName}
+        />
+        <InputWithLabel
+          label='Last Name'
+          onChangeText={(e) => this.setState({ lastName: e })}
+          inputValue={lastName}
+        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={this.saveUser}>
+          <Text style={styles.buttonText}>Save</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}

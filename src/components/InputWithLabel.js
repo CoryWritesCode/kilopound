@@ -28,7 +28,8 @@ const InputWithLabel = (props) => {
         {...props}
         keyboardAppearance='dark'
         value={props.inputValue}
-        style={styles.inputStyle} />
+        style={styles.inputStyle}
+        selectionColor={COLORS.PRIMARY} />
     </View>
   );
 };
