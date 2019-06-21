@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     color: COLORS.PRIMARY,
   },
   headerBtn: {
-    marginLeft: 10
+    marginLeft: 12,
+    padding: 10
   }
 });
 
