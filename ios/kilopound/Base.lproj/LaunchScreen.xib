@@ -55,10 +55,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="477.60000000000002" y="267.85714285714289"/>
+            <point key="canvasLocation" x="542.39999999999998" y="301.47783251231527"/>
         </view>
     </objects>
-    <resources>
-        <image name="dumbbell-white.png" width="256" height="256"/>
-    </resources>
 </document>

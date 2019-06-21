@@ -283,26 +283,26 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
-		82A512D422B2077F00B013DA /* PBXContainerItemProxy */ = {
+		8228524222BD19280051A5B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F643098716CE4FB6B96EF3DE /* RNCAsyncStorage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNCAsyncStorage;
+		};
+		8228524622BD19280051A5B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7EA443C873940C6A5CD66B3 /* RNSVG.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
 			remoteInfo = RNSVG;
 		};
-		82A512D622B2077F00B013DA /* PBXContainerItemProxy */ = {
+		8228524822BD19280051A5B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7EA443C873940C6A5CD66B3 /* RNSVG.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 94DDAC5C1F3D024300EED511;
 			remoteInfo = "RNSVG-tvOS";
-		};
-		82A512DD22B2077F00B013DA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F643098716CE4FB6B96EF3DE /* RNCAsyncStorage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNCAsyncStorage;
 		};
 		82B93E5B2287CAEB00D333EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -610,19 +610,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		82A512D022B2077F00B013DA /* Products */ = {
+		8228523D22BD19280051A5B0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				82A512D522B2077F00B013DA /* libRNSVG.a */,
-				82A512D722B2077F00B013DA /* libRNSVG-tvOS.a */,
+				8228524722BD19280051A5B0 /* libRNSVG.a */,
+				8228524922BD19280051A5B0 /* libRNSVG-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		82A512DA22B2077F00B013DA /* Products */ = {
+		8228523F22BD19280051A5B0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				82A512DE22B2077F00B013DA /* libRNCAsyncStorage.a */,
+				8228524322BD19280051A5B0 /* libRNCAsyncStorage.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -891,7 +891,7 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 82A512DA22B2077F00B013DA /* Products */;
+					ProductGroup = 8228523F22BD19280051A5B0 /* Products */;
 					ProjectRef = F643098716CE4FB6B96EF3DE /* RNCAsyncStorage.xcodeproj */;
 				},
 				{
@@ -899,7 +899,7 @@
 					ProjectRef = ED633768AF8844008FFC3E9F /* RNGestureHandler.xcodeproj */;
 				},
 				{
-					ProductGroup = 82A512D022B2077F00B013DA /* Products */;
+					ProductGroup = 8228523D22BD19280051A5B0 /* Products */;
 					ProjectRef = A7EA443C873940C6A5CD66B3 /* RNSVG.xcodeproj */;
 				},
 			);
@@ -1131,25 +1131,25 @@
 			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		82A512D522B2077F00B013DA /* libRNSVG.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNSVG.a;
-			remoteRef = 82A512D422B2077F00B013DA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		82A512D722B2077F00B013DA /* libRNSVG-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRNSVG-tvOS.a";
-			remoteRef = 82A512D622B2077F00B013DA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		82A512DE22B2077F00B013DA /* libRNCAsyncStorage.a */ = {
+		8228524322BD19280051A5B0 /* libRNCAsyncStorage.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNCAsyncStorage.a;
-			remoteRef = 82A512DD22B2077F00B013DA /* PBXContainerItemProxy */;
+			remoteRef = 8228524222BD19280051A5B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8228524722BD19280051A5B0 /* libRNSVG.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSVG.a;
+			remoteRef = 8228524622BD19280051A5B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8228524922BD19280051A5B0 /* libRNSVG-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNSVG-tvOS.a";
+			remoteRef = 8228524822BD19280051A5B0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		82B93E5C2287CAEB00D333EB /* libjsi.a */ = {
