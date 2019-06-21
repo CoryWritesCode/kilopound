@@ -48,22 +48,31 @@ const styles = StyleSheet.create({
 
 export default function HomeScreen() {
   const [total, setTotal] = useState(0);
+
+  const pounds = [
+
+  ];
+
+  const kilograms = [
+
+  ];
+
   return (
     <SafeAreaView style={styles.home}>
       <View style={styles.home}>
         <StatusBar barStyle="light-content" />
         <Text style={styles.title}>Home Screen</Text>
         <View style={styles.container}>
-          <AddWeight look={styles.content} ammount={10} handlePress={() => setTotal(total + 10)} />
-          <AddWeight look={styles.content} ammount={20} handlePress={() => setTotal(total + 20)} />
-          <AddWeight look={styles.content} ammount={30} handlePress={() => setTotal(total + 30)} />
-          <AddWeight look={styles.content} ammount={40} handlePress={() => setTotal(total + 40)} />
-          <AddWeight look={styles.content} ammount={50} handlePress={() => setTotal(total + 50)} />
-          <AddWeight look={styles.content} ammount={60} handlePress={() => setTotal(total + 60)} />
-          <AddWeight look={styles.content} ammount={70} handlePress={() => setTotal(total + 70)} />
-          <AddWeight look={styles.content} ammount={80} handlePress={() => setTotal(total + 80)} />
-          <AddWeight look={styles.content} ammount={90} handlePress={() => setTotal(total + 90)} />
-          <AddWeight look={styles.content} ammount={100} handlePress={() => setTotal(total + 100)} />
+          <AddWeight look={styles.content} amount={10} handlePress={() => setTotal(total + 10)} />
+          <AddWeight look={styles.content} amount={20} handlePress={() => setTotal(total + 20)} />
+          <AddWeight look={styles.content} amount={30} handlePress={() => setTotal(total + 30)} />
+          <AddWeight look={styles.content} amount={40} handlePress={() => setTotal(total + 40)} />
+          <AddWeight look={styles.content} amount={50} handlePress={() => setTotal(total + 50)} />
+          <AddWeight look={styles.content} amount={60} handlePress={() => setTotal(total + 60)} />
+          <AddWeight look={styles.content} amount={70} handlePress={() => setTotal(total + 70)} />
+          <AddWeight look={styles.content} amount={80} handlePress={() => setTotal(total + 80)} />
+          <AddWeight look={styles.content} amount={90} handlePress={() => setTotal(total + 90)} />
+          <AddWeight look={styles.content} amount={100} handlePress={() => setTotal(total + 100)} />
         </View>
         <Text style={styles.content}>Total: {total}</Text>
         <TouchableOpacity style={styles.resetBtn} onPress={() => setTotal(0)}>

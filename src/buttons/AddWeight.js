@@ -19,7 +19,7 @@ function AddWeight(props) {
       <TouchableOpacity
         style={styles.button}
         onPress={props.handlePress}>
-        <Text style={props.look}>{props.ammount}</Text>
+        <Text style={props.look}>{props.amount}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -27,7 +27,7 @@ function AddWeight(props) {
 
 AddWeight.propTypes = {
   handlePress: PropTypes.func.isRequired,
-  ammount: PropTypes.number.isRequired,
+  amount: PropTypes.number.isRequired,
   look: PropTypes.object
 };
 
