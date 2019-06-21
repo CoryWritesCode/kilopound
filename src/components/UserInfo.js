@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { TouchableOpacity, View, Text, StyleSheet, StatusBar } from 'react-native';
 import { getData, storeData } from '../utils/AsyncStorage';
 import { COLORS } from '../styles/global';
 import InputWithLabel from './InputWithLabel';
 import GoTo from '../buttons/Navigate';
-import { NavigationEvents } from 'react-navigation';
 
 const styles = StyleSheet.create({
   container: {
@@ -95,6 +94,7 @@ export default class UserInfo extends React.Component {
 
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="light-content" />
         <InputWithLabel
           label='First Name'
           onChangeText={(e) => this.setState({ firstName: e })}

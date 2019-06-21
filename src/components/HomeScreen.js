@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Platform, StyleSheet, Text, View, Image } from 'react-native';
+import { Platform, StyleSheet, Text, View, Image, StatusBar } from 'react-native';
 import GoTo from '../buttons/Navigate';
 
 const styles = StyleSheet.create({
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
 export default function HomeScreen() {
   return (
     <View style={styles.home}>
+      <StatusBar barStyle="light-content" />
       <Text style={styles.title}>Home Screen</Text>
       <GoTo title="Go to Account" navigate="Account" />
     </View>

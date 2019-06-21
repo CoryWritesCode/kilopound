@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import { COLORS, DIMENSIONS } from '../styles/global';
 import { getData, removeData } from '../utils/AsyncStorage';
 import { NavigationEvents } from 'react-navigation';
@@ -58,6 +58,7 @@ const AccountScreen = ({ navigation }) => {
 
   return (
     <View style={styles.account}>
+      <StatusBar barStyle="light-content" />
       <NavigationEvents onWillFocus={willFocus} />
       <Text style={styles.title}>Account</Text>
       <View style={styles.info}>
