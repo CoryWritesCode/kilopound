@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { COLORS } from '../styles/global';
 

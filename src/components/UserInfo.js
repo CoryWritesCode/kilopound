@@ -1,5 +1,12 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, StyleSheet, StatusBar } from 'react-native';
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  StyleSheet,
+  StatusBar,
+  SafeAreaView
+} from 'react-native';
 import { getData, storeData } from '../utils/AsyncStorage';
 import { COLORS } from '../styles/global';
 import InputWithLabel from './InputWithLabel';
@@ -8,7 +15,6 @@ import GoTo from '../buttons/Navigate';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 25,
     backgroundColor: COLORS.BGCOLOR,
   },
   button: {
@@ -94,24 +100,26 @@ export default class UserInfo extends React.Component {
     } = this.state;
 
     return (
-      <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        <InputWithLabel
-          label='First Name'
-          onChangeText={(e) => this.setState({ firstName: e })}
-          inputValue={firstName}
-        />
-        <InputWithLabel
-          label='Last Name'
-          onChangeText={(e) => this.setState({ lastName: e })}
-          inputValue={lastName}
-        />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={this.saveUser}>
-          <Text style={styles.buttonText}>Save</Text>
-        </TouchableOpacity>
-      </View>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+          <StatusBar barStyle="light-content" />
+          <InputWithLabel
+            label='First Name'
+            onChangeText={(e) => this.setState({ firstName: e })}
+            inputValue={firstName}
+          />
+          <InputWithLabel
+            label='Last Name'
+            onChangeText={(e) => this.setState({ lastName: e })}
+            inputValue={lastName}
+          />
+          <TouchableOpacity
+            style={styles.button}
+            onPress={this.saveUser}>
+            <Text style={styles.buttonText}>Save</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
     );
   }
 }
