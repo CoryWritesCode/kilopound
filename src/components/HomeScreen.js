@@ -9,20 +9,14 @@ import {
   Switch
 } from 'react-native';
 import { AddWeight } from '../buttons';
-import { COLORS, DIMENSIONS } from '../styles/global';
+import { COLORS, DIMENSIONS } from '../globals/styles';
+import { WEIGHTS } from '../globals/system';
 
 const styles = StyleSheet.create({
   home: {
     flex: 1,
-    backgroundColor: '#2D2F32'
-  },
-  title: {
-    height: '7%',
-    color: COLORS.FONT_COLOR,
-    textDecorationLine: 'underline',
-    fontWeight: 'bold',
-    fontSize: DIMENSIONS.MAX_WIDTH * 0.06,
-    alignSelf: 'center'
+    backgroundColor: '#2D2F32',
+    paddingTop: 20
   },
   resetBtn: {
     borderColor: COLORS.PRIMARY,
@@ -31,6 +25,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
     marginHorizontal: 20,
+    marginVertical: 5,
     alignSelf: 'center'
   },
   content: {
@@ -43,7 +38,9 @@ const styles = StyleSheet.create({
     height: '75%',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '85%',
+    alignSelf: 'center'
   },
   totalContainer: {
     flexWrap: 'wrap',
@@ -52,54 +49,43 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   switchContainer: {
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  totalContent: {
+    paddingHorizontal: 20,
+    color: COLORS.FONT_COLOR
+  },
+  btnContent: {
+    color: COLORS.FONT_COLOR,
+    width: 50,
+    height: 45,
+    alignItems: 'center'
   }
 });
 
 export default function HomeScreen() {
   const [total, setTotal] = useState(0);
   const [isBritish, setIsBritish] = useState(false);
+
   let metric = isBritish ? 'kg' : 'lbs';
+  let weights = isBritish ? WEIGHTS.KILOGRAMS : WEIGHTS.POUNDS;
 
-  const pounds = [
-    1.1,
-    2.2,
-    3,
-    4.5,
-    5.5,
-    11,
-    22,
-    33,
-    44,
-    55
-  ];
-
-  const kilograms = [
-    0.5,
-    1,
-    1.5,
-    2,
-    2.5,
-    5,
-    10,
-    15,
-    20,
-    25
-  ];
-
-  let weights = isBritish ? kilograms : pounds;
 
   return (
     <SafeAreaView style={styles.home}>
       <View style={styles.home}>
         <StatusBar barStyle="light-content" />
-        <Text style={styles.title}>Home Screen</Text>
         <View style={styles.weightContainer}>
-          {weights.map((weight) => <AddWeight key={weight} look={styles.content} amount={weight} handlePress={() => setTotal(total + weight)} />)}
+          {weights.map((weight) => <AddWeight key={weight} look={styles.btnContent} amount={weight} handlePress={() => setTotal(total + weight)} />)}
         </View>
         <View style={styles.totalContainer}>
-          <Text style={styles.content}>Total: {total} {metric}</Text>
+          <View>
+            <Text style={styles.content}>Total:</Text>
+            <Text style={styles.totalContent}>{total} {metric}</Text>
+          </View>
           <View style={styles.switchContainer}>
+            <Text style={styles.content}>Change Metric</Text>
             <Switch
               trackColor={{ false: COLORS.PRIMARY, true: COLORS.PRIMARY }}
               onValueChange={() => setIsBritish(!isBritish)}
@@ -108,14 +94,12 @@ export default function HomeScreen() {
             />
           </View>
         </View>
-        <TouchableOpacity style={styles.resetBtn} onPress={() => setTotal(0)}>
-          <Text style={{ color: styles.resetBtn.borderColor }}>Reset</Text>
-        </TouchableOpacity>
+        <View style={{ marginVertical: 10 }}>
+          <TouchableOpacity style={styles.resetBtn} onPress={() => setTotal(0)}>
+            <Text style={{ color: styles.resetBtn.borderColor }}>Reset</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
 }
-
-HomeScreen.propTypes = {
-
-};

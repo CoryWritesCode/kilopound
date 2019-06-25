@@ -8,7 +8,7 @@ import {
   SafeAreaView
 } from 'react-native';
 import { getData, storeData } from '../utils/AsyncStorage';
-import { COLORS } from '../styles/global';
+import { COLORS } from '../globals/styles/index';
 import InputWithLabel from './InputWithLabel';
 import GoTo from '../buttons/Navigate';
 

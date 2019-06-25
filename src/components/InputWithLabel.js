@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TextInput, View, Text, StyleSheet } from 'react-native';
-import { COLORS } from '../styles/global';
+import { COLORS } from '../globals/styles/index';
 
 const styles = StyleSheet.create({
   labelStyle: {

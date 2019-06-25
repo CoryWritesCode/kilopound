@@ -4,7 +4,7 @@
     "target": "esnext",
     "paths": {
       "@styles/*": [
-        "./src/styles/*"
+        "src/globals/styles/*"
       ],
       "@components/*": [
         "./src/components/*"
