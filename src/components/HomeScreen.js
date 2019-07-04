@@ -9,14 +9,13 @@ import {
   Switch
 } from 'react-native';
 import { AddWeight } from '../buttons';
-import { COLORS, DIMENSIONS } from '../globals/styles';
+import { COLORS } from '../globals/styles';
 import { WEIGHTS } from '../globals/system';
+import NativeTachyons from 'react-native-style-tachyons';
 
 const styles = StyleSheet.create({
   home: {
-    flex: 1,
     backgroundColor: '#2D2F32',
-    paddingTop: 20
   },
   resetBtn: {
     borderColor: COLORS.PRIMARY,
@@ -36,21 +35,6 @@ const styles = StyleSheet.create({
   },
   weightContainer: {
     height: '75%',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    width: '85%',
-    alignSelf: 'center'
-  },
-  totalContainer: {
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignContent: 'center',
-  },
-  switchContainer: {
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   totalContent: {
     paddingHorizontal: 20,
@@ -64,7 +48,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function HomeScreen() {
+function HomeScreen() {
   const [total, setTotal] = useState(0);
   const [isBritish, setIsBritish] = useState(false);
 
@@ -73,18 +57,18 @@ export default function HomeScreen() {
 
 
   return (
-    <SafeAreaView style={styles.home}>
-      <View style={styles.home}>
+    <SafeAreaView cls='flx-i' style={styles.home}>
+      <View cls='flx-i pt2' style={styles.home}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.weightContainer}>
+        <View cls='flx-row flx-wrap jcc asc w5' style={styles.weightContainer}>
           {weights.map((weight) => <AddWeight key={weight} look={styles.btnContent} amount={weight} handlePress={() => setTotal(total + weight)} />)}
         </View>
-        <View style={styles.totalContainer}>
+        <View cls='flx-wrap flx-row jcsa aic'>
           <View>
             <Text style={styles.content}>Total:</Text>
             <Text style={styles.totalContent}>{total} {metric}</Text>
           </View>
-          <View style={styles.switchContainer}>
+          <View cls='jcc aic'>
             <Text style={styles.content}>Change Metric</Text>
             <Switch
               trackColor={{ false: COLORS.PRIMARY, true: COLORS.PRIMARY }}
@@ -103,3 +87,5 @@ export default function HomeScreen() {
     </SafeAreaView>
   );
 }
+
+export default NativeTachyons.wrap(HomeScreen);

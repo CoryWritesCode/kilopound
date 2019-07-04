@@ -1,6 +1,6 @@
 import React from 'react';
 import { createAppContainer, createBottomTabNavigator } from 'react-navigation';
-import { COLORS } from './src/globals/styles/index';
+import { COLORS, DIMENSIONS } from './src/globals/styles/index';
 import { faHome, faDumbbell, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import HomeScreen from './src/components/HomeScreen';
 import ChallengeScreen from './src/components/ChallengesScreen';
