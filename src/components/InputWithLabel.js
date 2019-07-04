@@ -1,34 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextInput, View, Text, StyleSheet } from 'react-native';
+import { TextInput, View, Text } from 'react-native';
 import { COLORS } from '../globals/styles/index';
-
-const styles = StyleSheet.create({
-  labelStyle: {
-    color: COLORS.FONT_COLOR,
-    textDecorationLine: 'underline',
-    marginTop: 10,
-  },
-  inputStyle: {
-    color: COLORS.FONT_COLOR,
-    borderColor: COLORS.SECONDARY,
-    borderWidth: 1,
-    borderRadius: 2.5,
-    marginVertical: 5,
-    padding: 5,
-  }
-});
+import NativeTachyons from 'react-native-style-tachyons';
 
 const InputWithLabel = (props) => {
 
   return (
     <View>
-      <Text style={styles.labelStyle}>{props.label}</Text>
+      <Text cls='font mt2 underline'>{props.label}</Text>
       <TextInput
         {...props}
         keyboardAppearance='dark'
         value={props.inputValue}
-        style={styles.inputStyle}
+        cls='font ba br2 mv1 pa1 b--secondary'
         selectionColor={COLORS.PRIMARY} />
     </View>
   );
@@ -40,4 +25,4 @@ InputWithLabel.propTypes = {
   onChange: PropTypes.func,
 };
 
-export default InputWithLabel;
+export default NativeTachyons.wrap(InputWithLabel);

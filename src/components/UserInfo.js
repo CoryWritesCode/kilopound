@@ -83,7 +83,7 @@ class UserInfo extends React.Component {
     } = this.state;
 
     return (
-      <View cls='flx-i bg-bgcolor'>
+      <View cls='flx-i bg-bgcolor pa3'>
         <StatusBar barStyle="light-content" />
         <InputWithLabel
           label='First Name'
