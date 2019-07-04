@@ -10,32 +10,16 @@ import { getData, storeData } from '../utils/AsyncStorage';
 import { COLORS } from '../globals/styles/index';
 import InputWithLabel from './InputWithLabel';
 import GoTo from '../buttons/Navigate';
+import NativeTachyons from 'react-native-style-tachyons';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.BGCOLOR,
-  },
-  button: {
-    marginHorizontal: 100,
-    marginVertical: 20,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: COLORS.PRIMARY,
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-  buttonText: {
-    fontWeight: 'bold',
-    color: COLORS.PRIMARY,
-  },
   headerBtn: {
     marginLeft: 12,
     padding: 10
   }
 });
 
-export default class UserInfo extends React.Component {
+class UserInfo extends React.Component {
   static navigationOptions({ navigation }) {
     let edit = navigation.getParam('edit', false);
     return {
@@ -99,7 +83,7 @@ export default class UserInfo extends React.Component {
     } = this.state;
 
     return (
-      <View style={styles.container}>
+      <View cls='flx-i bg-bgcolor'>
         <StatusBar barStyle="light-content" />
         <InputWithLabel
           label='First Name'
@@ -112,11 +96,13 @@ export default class UserInfo extends React.Component {
           inputValue={lastName}
         />
         <TouchableOpacity
-          style={styles.button}
+          cls='w4 mv3 pa2 ba b--primary br2 asc aic'
           onPress={this.saveUser}>
-          <Text style={styles.buttonText}>Save</Text>
+          <Text cls='primary b'>Save</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
+
+export default NativeTachyons.wrap(UserInfo);

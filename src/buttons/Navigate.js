@@ -11,7 +11,7 @@ function GoTo(props) {
       <TouchableOpacity
         style={props.look}
         onPress={handlePress}>
-        <Text cls='primary'>{props.title}</Text>
+        <Text cls='primary f5'>{props.title}</Text>
       </TouchableOpacity>
     </View>
   );
