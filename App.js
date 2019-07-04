@@ -60,8 +60,11 @@ const AppNavigator = createBottomTabNavigator(
         showIcon: true,
         style: {
           backgroundColor: COLORS.BGCOLOR,
-          paddingTop: 15,
+          paddingTop: 5
         },
+        labelStyle: {
+          marginBottom: -5
+        }
       },
     }
   }
