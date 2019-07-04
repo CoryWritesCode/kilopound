@@ -5,7 +5,6 @@ import {
   Text,
   StyleSheet,
   StatusBar,
-  SafeAreaView
 } from 'react-native';
 import { getData, storeData } from '../utils/AsyncStorage';
 import { COLORS } from '../globals/styles/index';
@@ -100,26 +99,24 @@ export default class UserInfo extends React.Component {
     } = this.state;
 
     return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.container}>
-          <StatusBar barStyle="light-content" />
-          <InputWithLabel
-            label='First Name'
-            onChangeText={(e) => this.setState({ firstName: e })}
-            inputValue={firstName}
-          />
-          <InputWithLabel
-            label='Last Name'
-            onChangeText={(e) => this.setState({ lastName: e })}
-            inputValue={lastName}
-          />
-          <TouchableOpacity
-            style={styles.button}
-            onPress={this.saveUser}>
-            <Text style={styles.buttonText}>Save</Text>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
+      <View style={styles.container}>
+        <StatusBar barStyle="light-content" />
+        <InputWithLabel
+          label='First Name'
+          onChangeText={(e) => this.setState({ firstName: e })}
+          inputValue={firstName}
+        />
+        <InputWithLabel
+          label='Last Name'
+          onChangeText={(e) => this.setState({ lastName: e })}
+          inputValue={lastName}
+        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={this.saveUser}>
+          <Text style={styles.buttonText}>Save</Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 }

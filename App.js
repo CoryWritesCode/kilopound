@@ -6,6 +6,23 @@ import HomeScreen from './src/components/HomeScreen';
 import ChallengeScreen from './src/components/ChallengesScreen';
 import TabBarIcon from './src/buttons/TabBarIcon';
 import AccountStack from './src/utils/stacks/AccountStack';
+import NativeTachyons from 'react-native-style-tachyons';
+import { StyleSheet } from 'react-native';
+
+NativeTachyons.build({
+  rem: 20,
+  fontRem: 20,
+  colors: {
+    palette: {
+      bgcolor: COLORS.BGCOLOR,
+      secbg: COLORS.SEC_BGCOLOR,
+      font: COLORS.FONT_COLOR,
+      primary: COLORS.PRIMARY,
+      secondary: COLORS.SECONDARY,
+      inactbtn: COLORS.INACTIVE_BTN_COLOR
+    }
+  }
+}, StyleSheet);
 
 const AppNavigator = createBottomTabNavigator(
   {

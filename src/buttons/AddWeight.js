@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
-import { COLORS } from '../globals/styles/index';
+import NativeTachyons from 'react-native-style-tachyons';
 
 const styles = StyleSheet.create({
   button: {
-    color: COLORS.PRIMARY,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: COLORS.FONT_COLOR,
-    margin: 5,
+    width: 50,
+    height: 50
   }
 });
 
@@ -17,18 +14,18 @@ function AddWeight(props) {
   return (
     <View>
       <TouchableOpacity
+        cls='ba br2 ma1 aic jcc b--font'
         style={styles.button}
         onPress={props.handlePress}>
-        <Text style={props.look}>{props.amount}</Text>
+        <Text cls='font'>{props.amount}</Text>
       </TouchableOpacity>
-    </View>
+    </View >
   );
 }
 
 AddWeight.propTypes = {
   handlePress: PropTypes.func.isRequired,
   amount: PropTypes.number.isRequired,
-  look: PropTypes.object
 };
 
-export default AddWeight;
+export default NativeTachyons.wrap(AddWeight);
