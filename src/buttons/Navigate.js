@@ -1,14 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import { COLORS } from '../styles/global';
-
-const styles = StyleSheet.create({
-  goTo: {
-    color: COLORS.PRIMARY,
-  }
-});
+import NativeTachyons from 'react-native-style-tachyons';
 
 function GoTo(props) {
   let handlePress = props.isDisabled ? () => { } : () => { props.navigation.navigate(props.navigate); };
@@ -17,7 +11,7 @@ function GoTo(props) {
       <TouchableOpacity
         style={props.look}
         onPress={handlePress}>
-        <Text style={styles.goTo}>{props.title}</Text>
+        <Text cls='primary f5'>{props.title}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -30,4 +24,4 @@ GoTo.propTypes = {
   isDisabled: PropTypes.bool
 };
 
-export default withNavigation(GoTo);
+export default withNavigation(NativeTachyons.wrap(GoTo));

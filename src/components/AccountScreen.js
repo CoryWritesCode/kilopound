@@ -7,7 +7,7 @@ import {
   StatusBar,
   SafeAreaView
 } from 'react-native';
-import { COLORS, DIMENSIONS } from '../styles/global';
+import { COLORS, DIMENSIONS } from '../globals/styles/index';
 import { getData, removeData } from '../utils/AsyncStorage';
 import { NavigationEvents } from 'react-navigation';
 

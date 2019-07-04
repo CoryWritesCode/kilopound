@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GoTo from '../buttons/Navigate';
-import { COLORS } from '../styles/global';
+import { COLORS } from '../globals/styles/index';
 import { Text, View, StyleSheet, StatusBar } from 'react-native';
 
 const styles = StyleSheet.create({
